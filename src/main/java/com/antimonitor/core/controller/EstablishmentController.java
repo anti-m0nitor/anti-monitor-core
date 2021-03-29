@@ -25,9 +25,9 @@ public class EstablishmentController {
 
         //Validacoes do meu estabelecimento (establishmentRequestDTO);
         /*
-        - Não receber o ID na request, e criá-lo na aplicação usando a lib de UUID do java.
+        OK - Não receber o ID na request, e criá-lo na aplicação usando a lib de UUID do java.
         - Adicionar o id na response.
-        - Tentar complementar um type.
+        OK - Tentar complementar um type.
         - Validar se o usuário informou no máximo 5 image URLs.
         - No response, formatar a data e hora para o padrao: dd/MM/yyyy hh24:mi
          */
@@ -47,13 +47,19 @@ public class EstablishmentController {
     public String getEstablishment() {
 
         Establishment establishment = new Establishment();
+
         establishment.setId("Pado");
         establishment.setName("vese");
 
-
         establishmentRepository.save(establishment);
 
-        return "Lista de todos estabelecimentos";
+
+        return "Todos os estabelecimentos criados";
     }
+
+//    @PostMapping("/establishment2")
+//    public Establishment createEstablishment(@RequestBody Establishment establishment) {
+//        return establishmentRepository.save(establishment);
+//    }
 
 }
