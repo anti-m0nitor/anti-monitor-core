@@ -2,13 +2,11 @@ package com.antimonitor.core.model;
 
 import org.apache.tomcat.jni.Local;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 @Entity
 @Table
@@ -16,16 +14,17 @@ public class Establishment {
 
     @Id
     @Column(name = "id", nullable = false)
-    private String id;
+    @GeneratedValue(generator = "uuid")
+    private UUID id;
 
     @Column(name = "name", nullable = false)
     private String name;
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -39,12 +38,11 @@ public class Establishment {
 
 
 
-
-    public static String dateTimePattern(LocalDateTime received) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
-        String inThePattern = formatter.format(received);
-
-        return inThePattern;
+    public static String urlValidation(String [] validation) {
+        if ((validation.length) > 5) {
+            return "O usuário cadastrou mais que 5 imagens";
+        }
+        return "Tudo Ok";
     }
 
 }

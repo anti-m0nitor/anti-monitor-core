@@ -1,6 +1,7 @@
 package com.antimonitor.core.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class EstablishmentResponseDTO {
 
@@ -20,10 +21,19 @@ public class EstablishmentResponseDTO {
     }
 
     public LocalDateTime getDate() {
-        return LocalDateTime.now();
+        return LocalDateTime.parse(dateTimePattern(LocalDateTime.now()));
     }
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+
+
+    public static String dateTimePattern(LocalDateTime received) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
+        String inThePattern = formatter.format(received);
+
+        return inThePattern;
     }
 }

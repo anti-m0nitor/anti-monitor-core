@@ -6,14 +6,14 @@ import com.antimonitor.core.model.EstablishmentResponseDTO;
 import com.antimonitor.core.repository.EstablishmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
+import java.util.UUID;
 
 @RestController
+@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 public class EstablishmentController {
 
     @Autowired
@@ -23,43 +23,41 @@ public class EstablishmentController {
     @ResponseStatus(HttpStatus.CREATED)
     public EstablishmentResponseDTO createEstablishment(@RequestBody EstablishmentRequestDTO establishmentRequestDTO) {
 
-        //Validacoes do meu estabelecimento (establishmentRequestDTO);
-        /*
-        OK - Não receber o ID na request, e criá-lo na aplicação usando a lib de UUID do java.
-        - Adicionar o id na response.
-        OK - Tentar complementar um type.
-        - Validar se o usuário informou no máximo 5 image URLs.
-        - No response, formatar a data e hora para o padrao: dd/MM/yyyy hh24:mi
-         */
-
-        //Salvar as informacoes no banco (establishmentRequestDTO);
-
-        //Criar um end-point onde o usuário consegue abrir ou fechar um estabeleciomento.
-
-        //Criar branch, commitar e enviar Pull Request!!!!
-
+        establishmentRequestDTO.setId(uuidRandom());
+        establishmentRequestDTO.setName("Jonatas");
 
         return new EstablishmentResponseDTO("Establishment was successfully created.");
 
     }
 
+
+
     @GetMapping("/establishment")
-    public String getEstablishment() {
+    public List<Establishment> listEstablishments() {
 
-        Establishment establishment = new Establishment();
+        return (List<Establishment>) establishmentRepository.findAll();
 
-        establishment.setId("Pado");
-        establishment.setName("vese");
-
-        establishmentRepository.save(establishment);
-
-
-        return "Todos os estabelecimentos criados";
     }
 
-//    @PostMapping("/establishment2")
-//    public Establishment createEstablishment(@RequestBody Establishment establishment) {
-//        return establishmentRepository.save(establishment);
-//    }
+
+
+    @PostMapping("/createestablishment")
+    public Establishment createEstablishment(@RequestBody Establishment establishment) {
+
+        return establishmentRepository.save(establishment);
+    }
+
+
+    public static UUID uuidRandom() {
+        UUID uuid = UUID.randomUUID();
+        String uuidAsString = uuid.toString();
+
+        return uuid;
+    }
+
+
+
+
+
 
 }
