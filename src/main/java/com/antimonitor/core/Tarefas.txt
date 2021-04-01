@@ -9,6 +9,6 @@
 
         //Salvar as informacoes no banco (establishmentRequestDTO);
 
-        //Criar um end-point onde o usuário consegue abrir ou fechar um estabeleciomento.
+        OK - Criar um end-point onde o usuário consegue abrir ou fechar um estabeleciomento.
 
         //Criar branch, commitar e enviar Pull Request!!!!
