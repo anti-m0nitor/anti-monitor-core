@@ -23,8 +23,7 @@ public class EstablishmentController {
     @ResponseStatus(HttpStatus.CREATED)
     public EstablishmentResponseDTO createEstablishment(@RequestBody EstablishmentRequestDTO establishmentRequestDTO) {
 
-        establishmentRequestDTO.setId(uuidRandom());
-        establishmentRequestDTO.setName("Jonatas");
+
 
         return new EstablishmentResponseDTO("Establishment was successfully created.");
 
@@ -43,6 +42,9 @@ public class EstablishmentController {
 
     @PostMapping("/createestablishment")
     public Establishment createEstablishment(@RequestBody Establishment establishment) {
+
+//        establishmentRequestDTO.setId(uuidRandom());
+//        establishmentRequestDTO.setName("Jonatas");
 
         return establishmentRepository.save(establishment);
     }
