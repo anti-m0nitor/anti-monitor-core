@@ -31,8 +31,10 @@ public class EstablishmentResponseDTO {
         this.date = date;
     }
 
-    Establishment establishment = new Establishment();
 
+
+
+    Establishment establishment = new Establishment();
 
     public static String dateTimePattern(LocalDateTime received) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
