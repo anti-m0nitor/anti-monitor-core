@@ -20,6 +20,8 @@ public class Establishment {
     @Column(name = "name", nullable = false)
     private String name;
 
+
+
     public UUID getId() {
         return id;
     }

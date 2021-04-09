@@ -1,7 +1,10 @@
 package com.antimonitor.core.model;
 
+import org.springframework.web.bind.annotation.RequestBody;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 public class EstablishmentResponseDTO {
 
@@ -28,6 +31,7 @@ public class EstablishmentResponseDTO {
         this.date = date;
     }
 
+    Establishment establishment = new Establishment();
 
 
     public static String dateTimePattern(LocalDateTime received) {
