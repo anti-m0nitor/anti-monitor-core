@@ -23,8 +23,8 @@ public class EstablishmentResponseDTO {
         this.message = message;
     }
 
-    public LocalDateTime getDate() {
-        return LocalDateTime.parse(dateTimePattern(LocalDateTime.now()));
+    public String getDate() {
+        return dateTimePattern(LocalDateTime.now());
     }
 
     public void setDate(LocalDateTime date) {
@@ -37,7 +37,7 @@ public class EstablishmentResponseDTO {
     Establishment establishment = new Establishment();
 
     public static String dateTimePattern(LocalDateTime received) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss");
         String inThePattern = formatter.format(received);
 
         return inThePattern;

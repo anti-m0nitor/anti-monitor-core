@@ -26,6 +26,18 @@ public class EstablishmentController {
     @ResponseStatus(HttpStatus.CREATED)
     public EstablishmentResponseDTO createEstablishment(@RequestBody EstablishmentRequestDTO establishmentRequestDTO) {
 
+        Establishment establishment = new Establishment();
+
+        establishment.setName(establishmentRequestDTO.getName());
+        establishment.setDescription(establishmentRequestDTO.getDescription());
+        establishment.setImage_urls(establishmentRequestDTO.getImage_urls());
+
+        if(establishment.getImage_urls().length > 5){
+            return new EstablishmentResponseDTO("Adicionou mais de 5 images");
+        }
+
+        establishmentRepository.save(establishment);
+
         return new EstablishmentResponseDTO("Establishment was successfully created.");
     }
 

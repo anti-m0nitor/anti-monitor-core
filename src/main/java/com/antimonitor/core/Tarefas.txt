@@ -1,14 +1,26 @@
  //Validacoes do meu estabelecimento (establishmentRequestDTO);
 
         OK - Não receber o ID na request, e criá-lo na aplicação usando a lib de UUID do java.
-        - Adicionar o id na response.
+        OK Adicionar o id na response.
         OK - Tentar complementar um type.
         OK - Validar se o usuário informou no máximo 5 image URLs.
         OK - No response, formatar a data e hora para o padrao: dd/MM/yyyy hh24:mi
-
 
         //Salvar as informacoes no banco (establishmentRequestDTO);
 
         OK - Criar um end-point onde o usuário consegue abrir ou fechar um estabeleciomento.
 
         //Criar branch, commitar e enviar Pull Request!!!!
+
+
+ (FOCAR NO NOSSO METODO POST /establishment)
+
+        - Adicionar ID da entidade na resposta.
+        - No estabilishment controller, no caso de mais de 5 urls, retornar erro com status 400 (bad request).
+        - Nosso método de POST /establishment está muito grande, vamos quebrar sua lógica em métodos melhores, buscando que cada método tenha uma responsabilidade única.
+        - Criar teste unitários para nossa validação de mais de 5 URLs. (caso feliz e caso triste)
+        OK -  No response, formatar a data no padrão dd/MM/YYYY hh24:mi:ss. Dica: pode-se retornar como string, não precisa necessariamente retornar como LocalDateTime
+        - Trocar o H2 pelo Oracle, em container.
+            - Usar como base a branch: https://github.com/anti-m0nitor/anti-monitor-core/tree/oracle-db
+            - Entre na raíz do projeto e suba o container usando o comando: docker-compose up (este comando busca pelo arquivo docker-compose.yml)(se não tiver no PC, instale o docker e o docker-compose)
+            - baixe o software sql developer no site da oracle e conecte no banco após subi-lo.
