@@ -4,11 +4,12 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import java.time.LocalTime;
 import java.util.Arrays;
+import java.util.UUID;
 
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class EstablishmentRequestDTO {
 
-    private String id;
+    private UUID id;
     private String name;
     private String description;
     private Type type;
@@ -19,11 +20,11 @@ public class EstablishmentRequestDTO {
     private boolean automaticClose;
     private String[] image_urls;
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
