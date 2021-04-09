@@ -24,7 +24,7 @@ public class EstablishmentController {
 
     @PostMapping("/establishment")
     @ResponseStatus(HttpStatus.CREATED)
-    public EstablishmentResponseDTO createEstablishment(@RequestBody EstablishmentRequestDTO establishmentRequestDTO) {
+    public EstablishmentResponseDTO createEstablishment(@RequestBody EstablishmentRequestDTO establishmentRequestDTO) throws ResponseStatusException {
 
         Establishment establishment = new Establishment();
 
@@ -32,8 +32,10 @@ public class EstablishmentController {
         establishment.setDescription(establishmentRequestDTO.getDescription());
         establishment.setImage_urls(establishmentRequestDTO.getImage_urls());
 
+
         if(establishment.getImage_urls().length > 5){
-            return new EstablishmentResponseDTO("Adicionou mais de 5 images");
+
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The user has registered more than 5 image_urls");
         }
 
         establishmentRepository.save(establishment);
