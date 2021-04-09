@@ -44,7 +44,6 @@ public class EstablishmentController {
 
 
 
-
     @GetMapping("/findestablishment/{id}")
     public Establishment findEstablishment(@PathVariable("id") UUID id){
 

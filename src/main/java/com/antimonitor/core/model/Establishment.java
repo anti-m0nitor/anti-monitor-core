@@ -20,6 +20,15 @@ public class Establishment {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "description", nullable = false)
+    private String description;
+
+    @Column(name = "image_urls", nullable = false)
+    private String[] image_urls;
+
+
+    private String message;
+
 
 
     public UUID getId() {
@@ -31,6 +40,7 @@ public class Establishment {
     }
 
     public String getName() {
+
         return name;
     }
 
@@ -39,6 +49,30 @@ public class Establishment {
     }
 
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
+    public String[] getImage_urls() {
+        return image_urls;
+    }
+
+    public void setImage_urls(String[] image_urls) {
+        this.image_urls = image_urls;
+    }
+
+    public String getMessage() {
+        return urlValidation(getImage_urls());
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public static String urlValidation(String [] validation) {
         if ((validation.length) > 5) {
@@ -46,5 +80,7 @@ public class Establishment {
         }
         return "Tudo Ok";
     }
+
+
 
 }
