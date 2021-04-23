@@ -9,7 +9,7 @@ import java.util.UUID;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class EstablishmentRequestDTO {
 
-    private UUID id;
+
     private String name;
     private String description;
     private Type type;
@@ -20,13 +20,6 @@ public class EstablishmentRequestDTO {
     private boolean automaticClose;
     private String[] image_urls;
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -103,7 +96,6 @@ public class EstablishmentRequestDTO {
     @Override
     public String toString() {
         return "Establishment{" +
-                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", type=" + type +
