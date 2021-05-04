@@ -1,8 +1,20 @@
 version: '3'
 
-services: 
+services:
+  core:
+    build: .
+    ports:
+      - "8080:8080"
+    networks:
+      - anti-monitor-compose-network
   oracle-db:
     image: oracleinanutshell/oracle-xe-11g:latest
     ports:
       - 1521:1521
       - 5500:5500
+    networks:
+      - anti-monitor-compose-network
+
+networks:
+  anti-monitor-compose-network:
+    driver: bridge
